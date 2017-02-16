@@ -1,0 +1,33 @@
+// Imagemaps do not work on a normal tap on iOS 8.0 onwards - user has to hold the tap for a longer duration
+// This is an image map example - it works for an imagemap with 2 areas divided into half portions of the screen
+function initializeImageMaps() {
+  $('p.title').parent().on('touchstart', 'area', function() {
+    $(this).data('start', '1');
+  });
+  $(document).on('scroll', function() {
+    $('area').data('start', '0');
+  });
+  $('p.title').parent().on('touchend', 'area', function() {
+    if($(this).data('start') == '1') {
+      $(this).data('start', '0');
+      window.location= $(this).attr('href');
+    }
+  });
+  var halfwayX= parseInt($(window).width() / 2);
+  changeImageMapCoords(halfwayX);
+  //
+  function changeImageMapCoords(halfwayX) {
+    // change image map coordinates
+    // it is only for 2 'areas'/ divided into half portions of the screen
+    var firstAreaCoords= $('area').eq(0).attr('coords').split(',');
+    var secondAreaCoords= $('area').eq(1).attr('coords').split(',');
+    firstAreaCoords[2] = halfwayX;
+    secondAreaCoords[0]= halfwayX + 1;
+    $('area').eq(0).attr('coords', firstAreaCoords.join(','));
+    $('area').eq(1).attr('coords', secondAreaCoords.join(','));
+  }
+  //
+  $(window).on("orientationchange", function() {
+    changeImageMapCoords(parseInt($(window).width() / 2));
+  });
+}
