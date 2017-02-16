@@ -7,6 +7,7 @@
 // Imagemaps do not work on a normal tap on iOS 8.0 onwards - user has to hold the tap for a longer duration
 // This is an image map example - it works for an imagemap with 2 areas divided into half portions of the screen
 function initializeImageMaps() {
+  // .element is the container element which holds area elements
   $('p.title').parent().on('touchstart', 'area', function() {
     $(this).data('start', '1');
   });
@@ -38,5 +39,16 @@ function initializeImageMaps() {
   });
 }
 </pre>
+    <h3>Location of host file</h3>
+<pre>%systemroot%\system32\drivers\etc\</pre>
+
+    <h2>xpath</h2>
+    
+    <h3>select nodes by name</h3>
+<pre>//div[contains(@class, "classname")]//node()[name() = 'h1']</pre>
+
+    <h3>select node having no child & empty text</h3>
+<pre>/div[@class='classname'][not(*) and normalize-space(text())='']</pre>
+
   </body>
 </html>
