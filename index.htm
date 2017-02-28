@@ -14,7 +14,7 @@ function initializeImageMaps() {
   $(document).on('scroll', function() {
     $('area').data('start', '0');
   });
-  $('p.title').parent().on('touchend', 'area', function() {
+  $('.element').on('touchend', 'area', function() {
     if($(this).data('start') == '1') {
       $(this).data('start', '0');
       window.location= $(this).attr('href');
