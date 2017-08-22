@@ -7,6 +7,10 @@
 $(window).ready(function() {
   var $sch= $("#SimpleSearchForm_SearchTerm");
   console.log('sch:\t', $sch);
+  console.log('sch count:\t', $sch.length);
+  $sch.on('click', function() {
+    console.log('search value:\t', $sch.val());
+  });
 });
 </script>
 </body>
