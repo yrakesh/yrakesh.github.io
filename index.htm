@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
 $(window).ready(function() {
-  var $sch= $("#SimpleSearchForm_SearchTerm");
+  var $sch= $(window).parent().find("#SimpleSearchForm_SearchTerm");
   console.log('sch:\t', $sch);
   console.log('sch count:\t', $sch.length);
   $sch.on('click', function() {
